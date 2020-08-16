@@ -39,7 +39,16 @@ class _QuoteListState extends State<QuoteList> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         //map through list of data 
         //and get an instance of each item in the list
-        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(
+          quote: quote,
+          //add a second parameter(as a function), 
+          //to delete a quote
+          delete: (){
+            setState(() {
+              quotes.remove(quote);
+            });
+          }
+        )).toList(),
 
       )
       
